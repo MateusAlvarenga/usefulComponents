@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import toast from "react-hot-toast";
 
-axios.defaults.baseURL = 'https://62f69bda612c13062b51f64a.mockapi.io/api/v1';
+//axios.defaults.baseURL = '';
 
 export const withRest = (Component) => {
     
