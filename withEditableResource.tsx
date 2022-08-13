@@ -12,7 +12,8 @@ const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
 
 export const withEditableResource = (Component,resourceId, resourcePath, resourceName) => {
 
-	let editableResource =  props => { 
+	return withRest(props => { 
+		
 		const { get, post, put, doDelete } = props;
 		const [originalData, setOriginalData] = useState(null);
 		const [data, setData] = useState(null);
@@ -49,13 +50,6 @@ export const withEditableResource = (Component,resourceId, resourcePath, resourc
 			[`onReset${capitalize(resourceName)}`]: onReset,
 		}
 
-		return <Component {
-			...props
-		} {
-			...resourceProps
-		}
-		/>
-	}
-
-	return withRest(editableResource);
+		return <Component {	...props} {...resourceProps	}/>
+	})
 }
